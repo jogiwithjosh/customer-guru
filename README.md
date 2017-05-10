@@ -1,6 +1,7 @@
 # customer-guru
 
-## Tech Stack
-Spring Boot
-Hibernate
-MySql
+#Tech Stack
+## Spring Boot
+## Hibernate
+## MySql
+## AngularJs
