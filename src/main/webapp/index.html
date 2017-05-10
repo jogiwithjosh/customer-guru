@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Customer Guru - Weather Forecast</title>
+<link rel="stylesheet" href="assets/css/bootstrap.min.css" async defer>
+<link rel="stylesheet" href="assets/css/angular-material.min.css" async defer>
+<!-- <link rel="stylesheet" href="assets/css/style.css" async defer> -->
+
+<script src="assets/js/angular/angular.min.js"></script>
+<script src="assets/js/angular/angular-aria.min.js"></script>
+<script src="assets/js/angular/angular-animate.min.js"></script>
+<script src="assets/js/angular/angular-material.min.js"></script>
+<script type="text/javascript" src="assets/js/canvasjs.min.js"></script>
+<script src="lib/app.js"></script>
+<script src="lib/weather-controller.js"></script>
+
+<script src="lib/info-factory.js"></script>
+
+</head>
+<body ng-app="guruApp" ng-controller="WeatherController as ctrl" ngCloak>
+	<div layout="column" ng-cloak>
+  <md-content class="md-padding">
+    <form ng-submit="$event.preventDefault()">
+      <p>Select city to get weather forecast</p>
+      <md-autocomplete
+          ng-disabled="ctrl.isDisabled"
+          md-no-cache="ctrl.noCache"
+          md-selected-item="ctrl.selectedCity"
+          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)"
+          md-search-text="ctrl.searchText"
+          md-selected-item-change="ctrl.onChangeCity(item)"
+          md-items="item in ctrl.querySearch(ctrl.searchText, 'cities', 'city')"
+          md-item-text="item.city"
+          md-min-length="0"
+          placeholder="Select City">
+        <md-item-template>
+          <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.city}}</span>
+        </md-item-template>
+        <md-not-found>
+          No states matching "{{ctrl.searchText}}" were found.
+        </md-not-found>
+      </md-autocomplete>
+      
+      <div>
+      	<div id="chartContainer" style="height: 300px; width: 100%;">
+      </div>
+      
+      <div>
+      	<div google-chart chart="myChartObject" style="height:600px; width:100%;"></div>
+      </div>
+</body>
+</html>
